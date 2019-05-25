@@ -9,11 +9,18 @@ class PlatesController extends Controller
 {
     public function create()
     {
-        return view('plates.index');
+        $plates = Plate::all();
+        return view('plates.index', compact('plates'));
     }
 
     public function store()
     {
-        dd('hola');
+        $data = request()->validate([
+            'name' => 'required',
+            'price' => 'required|numeric',
+        ]);
+
+        Plate::create($data);
+        return redirect('/p/create');
     }
 }

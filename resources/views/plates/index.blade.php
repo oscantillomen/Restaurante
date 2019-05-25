@@ -60,14 +60,24 @@
             <thead>
                 <tr>
                     <th>PLATO</th>
-                    <th>price</th>
+                    <th>PRECIO</th>
                     <th>EDITAR</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <td colspan="3">No hay registros</td>
-                </tr>
+            @forelse($plates as $plate)
+                    <tr>
+                        <td>{{ $plate->name }}</td>
+                        <td>{{ $plate->price }}</td>
+                        <td>
+                            <a href="/p/{{ $plate->id }}/edit" class="btn btn-warning"><i class="far fa-edit"></i> Editar</a>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="3" class="text-center">No hay ningun plato registrado.</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>
