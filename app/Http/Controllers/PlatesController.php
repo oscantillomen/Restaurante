@@ -23,4 +23,19 @@ class PlatesController extends Controller
         Plate::create($data);
         return redirect('/p/create');
     }
+
+    public function edit(Plate $plate)
+    {
+        return view('plates.edit', compact('plate'));
+    }
+
+    public function update(Plate $plate)
+    {
+        $data = request()->validate([
+            'name' => 'required',
+            'price' => 'required|numeric',
+        ]);
+        $plate->update($data);
+        return redirect('/p/create');
+    }
 }

@@ -25,4 +25,6 @@ Route::get('/i/{ingredient}/edit', 'IngredientsController@edit')->name('ingredie
 Route::patch('/i/{ingredient}', 'IngredientsController@update')->name('ingredient.update');
 
 Route::post('/p', 'PlatesController@store')->name('plates.store');
-Route::get('/p/create', 'PlatesController@create')->name('plate.create');
+Route::get('/p/create', 'PlatesController@create')->name('plates.create');
+Route::get('/p/{plate}/edit', 'PlatesController@edit')->name('plates.edit');
+Route::patch('/p/{plate}', 'PlatesController@update')->name('plates.update');
