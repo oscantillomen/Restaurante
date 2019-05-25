@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 Use \App\Plate;
+Use \App\Ingredient;
 use Illuminate\Http\Request;
 
 class PlatesController extends Controller
@@ -37,5 +38,13 @@ class PlatesController extends Controller
         ]);
         $plate->update($data);
         return redirect('/p/create');
+    }
+
+    public function show(Plate $plate)
+    {
+        $ingredients = Ingredient::all();
+        return view('plates.ingredients', [
+            'plate'=> $plate,
+            'ingredients' => $ingredients]);
     }
 }

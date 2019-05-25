@@ -62,16 +62,18 @@
                     <th>PLATO</th>
                     <th>PRECIO</th>
                     <th>EDITAR</th>
+                    <th>INGREDIENTES</th>
                 </tr>
             </thead>
             <tbody>
-            @forelse($plates as $plate)
+                @forelse($plates as $plate)
                     <tr>
                         <td>{{ $plate->name }}</td>
                         <td>{{ $plate->price }}</td>
                         <td>
                             <a href="/p/{{ $plate->id }}/edit" class="btn btn-warning"><i class="far fa-edit"></i> Editar</a>
                         </td>
+                        <td><a href="/p/{{ $plate->id }}/ingredients" class="btn btn-warning"><i class="far fa-edit"></i> Modificar</a></td>
                     </tr>
                 @empty
                     <tr>

@@ -28,3 +28,5 @@ Route::post('/p', 'PlatesController@store')->name('plates.store');
 Route::get('/p/create', 'PlatesController@create')->name('plates.create');
 Route::get('/p/{plate}/edit', 'PlatesController@edit')->name('plates.edit');
 Route::patch('/p/{plate}', 'PlatesController@update')->name('plates.update');
+
+Route::get('/p/{plate}/ingredients', 'PlatesController@show')->name('plates.show');
