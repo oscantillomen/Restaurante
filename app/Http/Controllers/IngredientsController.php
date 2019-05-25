@@ -10,9 +10,7 @@ class IngredientsController extends Controller
     public function create()
     {
         $ingredients = Ingredient::all();
-        return view('ingredients.create', [
-            'ingredients' => $ingredients,
-        ]);
+        return view('ingredients.index', compact('ingredients'));
     }
 
     public function store()
@@ -22,8 +20,22 @@ class IngredientsController extends Controller
             'provider' => 'required',
         ]);
 
-        \App\Ingredient::create($data);
+        Ingredient::create($data);
         return redirect('/i/create');
     }
 
+    public function edit(Ingredient $ingredient)
+    {
+        return view('ingredients.edit', compact('ingredient'));
+    }
+
+    public function update(Ingredient $ingredient)
+    {
+        $data = request()->validate([
+            'name' => 'required',
+            'provider' => 'required',
+        ]);
+        $ingredient->update($data);
+        return redirect('/i/create');
+    }
 }

@@ -19,5 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/i/create', 'IngredientsController@create');
 Route::post('/i', 'IngredientsController@store');
+Route::get('/i/create', 'IngredientsController@create');
+Route::get('/i/{ingredient}/edit', 'IngredientsController@edit')->name('ingredient.edit');
+Route::patch('/i/{ingredient}', 'IngredientsController@update')->name('ingredient.update');
